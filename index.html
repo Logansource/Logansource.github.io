@@ -25,46 +25,17 @@
     <script>
         // Enumerate media devices
         
-       navigator.mediaDevices.enumerateDevices()
-  .then(gotDevices)
-  .catch(errorCallback);
-...
-function gotDevices(deviceInfos) {
-
-  ...
-
-  for (var i = 0; i !== deviceInfos.length; ++i) {
-    var deviceInfo = deviceInfos[i];
-    var option = document.createElement('option');
-    option.value = deviceInfo.deviceId;
-    if (deviceInfo.kind === 'audioinput') {
-      option.text = deviceInfo.label ||
-        'Microphone ' + (audioInputSelect.length + 1);
-      audioInputSelect.appendChild(option);
-    } else if (deviceInfo.kind === 'audiooutput') {
-      option.text = deviceInfo.label || 'Speaker ' +
-        (audioOutputSelect.length + 1);
-      audioOutputSelect.appendChild(option);
-    } else if (deviceInfo.kind === 'videoinput') {
-      option.text = deviceInfo.label || 'Camera ' +
-        (videoSelect.length + 1);
-      videoSelect.appendChild(option);
-    }
-
-  ...
-
-}
-        
+  
    // end enumerations     
         
         
         
         let constraintObj = { 
-            audio: false, 
+            audio: true, 
             video: { 
                 facingMode: "user", 
-                width: { min: 640, ideal: 1280, max: 1920 },
-                height: { min: 480, ideal: 720, max: 1080 } 
+                width: { min: 640, ideal: 640, max: 1920 },
+                height: { min: 480, ideal: 480, max: 1080 } 
             } 
         }; 
         // width: 1280, height: 720  -- preference only
